@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Login } from '../Models/Login';
-import { LoginService } from '../Services/login.service';
-import { LoadingController, Platform } from '@ionic/angular';
+import { Platform } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { Router } from '@angular/router';
+
+import { Login } from '../Models/Login';
+import { LoginService } from '../Services/login.service';
+import { LoaderService } from '../Services/loader.service';
 
 @Component({
   selector: 'app-login',
@@ -13,20 +15,19 @@ import { Router } from '@angular/router';
 export class LoginPage implements OnInit {
   
 		login = new Login();
-		private loading: any;
 
 		constructor(private loginService: LoginService, 
-			public loadingCtrl: LoadingController, 
 			private storage: Storage, 
 			private platform: Platform,
-			private router: Router) { }
+			private router: Router,
+			private loaderService: LoaderService) { }
 
 	ngOnInit() {
 		this.isAuthenticated();
 	}
 
   	onLogin(){
-		this.presentLoading();
+		this.loaderService.presentLoading();
 		this.loginService.loginApi(this.login).subscribe(
 			res=> {
 				console.log(res);
@@ -36,11 +37,11 @@ export class LoginPage implements OnInit {
 				}else{
 					localStorage.setItem('token', token);
 				}
-				this.dismissLoading();
+				this.loaderService.dismissLoading();
 				this.router.navigate(['home']);
 			}, err=> {
 				console.log(err);
-				this.dismissLoading();
+				this.loaderService.dismissLoading();
 			});
 		}
 		
@@ -56,16 +57,5 @@ export class LoginPage implements OnInit {
 					this.router.navigate(['home']);
 				}
 			}
-		}
-
-		private async presentLoading() {
-			this.loading = await this.loadingCtrl.create({
-				message: 'Loading'
-			});
-			this.loading.present();
-		}
-
-		private dismissLoading() {
-			this.loading.dismiss();
 		}
 }

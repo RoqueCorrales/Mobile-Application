@@ -6,6 +6,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { LoginPage } from './login.page';
+import { LoaderService } from '../Services/loader.service';
+
 
 const routes: Routes = [
   {
@@ -20,6 +22,9 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes)
+  ],
+  providers: [
+    LoaderService
   ],
   declarations: [LoginPage]
 })
