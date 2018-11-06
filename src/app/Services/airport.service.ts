@@ -12,11 +12,11 @@ export class AirportService {
     private headers: HttpHeaders;
 
     constructor(private http: HttpClient) {
-        
+        this.headers = new HttpHeaders({'Access-Control-Allow-Origin' : '*'})
     }
 
     public getActiveAirports(): Observable<Airport[]> {
-        return this.http.get<Airport[]>(`${GLOBAL.statsApi}airports/rest/v1/json/active?` + `appId=${GLOBAL.appId}&appKey=${GLOBAL.appKey}`);
+        return this.http.get<Airport[]>(`${GLOBAL.statsApi}airports/rest/v1/json/active?` + `appId=${GLOBAL.appId}&appKey=${GLOBAL.appKey}`, {headers: this.headers});
     }
 
 }

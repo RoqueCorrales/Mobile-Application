@@ -16,7 +16,7 @@ export class AirportListingPage {
 
 
   constructor(private airportService: AirportService, private loader: LoaderService) {
-                
+    this.getAirports();
   }
 
   private getAirports() {
@@ -29,7 +29,7 @@ export class AirportListingPage {
     });
   }
 
-  ionViewWillEnter() {
+  ionViewDidEnter() {
     if(this.airports && this.airports.length === 0) this.getAirports();
   }
   

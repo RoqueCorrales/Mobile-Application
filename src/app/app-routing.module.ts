@@ -4,9 +4,10 @@ import { AirportListingPage } from './airport/airport-listing/airport-listing.pa
 import { HomePage } from './home/home.page';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'Login', pathMatch: 'full' },
   { path: 'home', loadChildren: './home/home.module#HomePageModule' },
-  { path: 'Login', loadChildren: './login/login.module#LoginPageModule' }
+  { path: 'airport' , loadChildren: './airport/airport.module#AirportPageModule'},
+  { path: 'Login', loadChildren: './login/login.module#LoginPageModule' },
+  { path: '', redirectTo: 'Login', pathMatch: 'full' }
 ];
 
 // const routes: Routes = [
