@@ -1,7 +1,0 @@
-{
-  "name": "FlightStats",
-  "integrations": {
-    "cordova": {}
-  },
-  "type": "angular"
-}
