@@ -1,12 +1,20 @@
 import React from 'react';
-import {StackNavigator} from "react-navigation";
+import {createStackNavigator } from "react-navigation";
 import LoginScreen from "../screens/Login";
+import HomeScreen from "../screens/HomeScreen";
+import AirportsScreen from '../screens/AirportsScreen';
 
-export default StackNavigator(
+export default createStackNavigator (
 	{
 		Login: {
 			screen: LoginScreen
-		}
+		},
+		Home: {
+			screen: HomeScreen
+		},
+		Airports: {
+			screen: AirportsScreen
+		} 
 	},
 	{
 		initialRouteName: 'Login',

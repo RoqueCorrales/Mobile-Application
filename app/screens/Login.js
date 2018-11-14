@@ -14,8 +14,8 @@ const Form = t.form.Form;
 
 export default class Login extends Component {
 
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 
 		this.user = t.struct({
 			email: FormValidation.email,
@@ -25,13 +25,13 @@ export default class Login extends Component {
 		this.options = {
 			fields: {
 				email: {
-					help: 'Introduce tu email',
-					error: 'Email incorrecto',
+					help: 'Type your email',
+					error: 'Invalid email',
 					autoCapitalize: 'none',
 				},
 				password: {
-					help: 'Introduce tu password',
-					error: 'Password incorrecto',
+					help: 'Type your password',
+					error: 'Invalid password',
 					password: true,
 					secureTextEntry: true,
 				}
@@ -68,10 +68,11 @@ export default class Login extends Component {
 		  	.then(res => res.json()
 		      	.then(resJson => {
 		      		if (resJson.error) {
-		      			Toast.showWithGravity('Credenciales Incorrectas', Toast.LONG, Toast.BOTTOM);
+		      			Toast.showWithGravity('Invalid credentials', Toast.LONG, Toast.BOTTOM);
 		      		}else{
 		      			this.saveToken(resJson.token_type + ' ' + resJson.access_token);
-		      			Toast.showWithGravity("Bienvenido", Toast.LONG, Toast.BOTTOM);
+						Toast.showWithGravity("Welcome!", Toast.LONG, Toast.BOTTOM);
+						this.props.navigation.navigate('Airports');	  
 		      		}
 		        })
 		    )
@@ -91,7 +92,7 @@ export default class Login extends Component {
 	render () {
 		return (
 			<View style={{justifyContent: 'center', flex: 1}}>
-				<Card title="Iniciar sesión">
+				<Card title="Log In">
 					<Form
 						ref="form"
 						type={this.user}
@@ -99,7 +100,7 @@ export default class Login extends Component {
 					/>
 					<AppButton
 						bgColor="#0c961e"
-						title="Iniciar Sesión"
+						title="Log In"
 						action={this.login.bind(this)}
 						iconName="sign-in"
 						iconSize={30}

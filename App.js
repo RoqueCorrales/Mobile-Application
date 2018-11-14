@@ -1,13 +1,17 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { Text, AsyncStorage, View } from 'react-native';
 
 import Preloader from "./app/components/Preloader";
 import GuestNavigation from './app/navigations/guest';
+import HomeScreen from './app/screens/HomeScreen';
+import AiportsScreen from './app/screens/AirportsScreen';
 
 
-export default class App extends React.Component {
-  constructor () {
-    super();
+
+
+export default class App extends Component {
+  constructor (props) {
+    super(props);
     this.state = {
       isLogged: false,
       loaded: false
@@ -37,9 +41,11 @@ export default class App extends React.Component {
     }
 
     if(isLogged) {
-      return (<View style={{flex: 1, flexDirection: 'column', justifyContent: 'center', alignItems: 'center',}}><Text>Hola</Text></View>);
+      return (<AiportsScreen/>);
+      //this.props.navigation.navigate('Home');	  
     } else {
       return (<GuestNavigation />);
     }
   }
 }
+
