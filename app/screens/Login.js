@@ -72,7 +72,11 @@ export default class Login extends Component {
 		      		}else{
 		      			this.saveToken(resJson.token_type + ' ' + resJson.access_token);
 						Toast.showWithGravity("Welcome!", Toast.LONG, Toast.BOTTOM);
-						this.props.navigation.navigate('Airports');	  
+						
+						const navigateAction = NavigationActions.navigate({
+							routeName: 'Home'
+						});
+						this.props.navigation.dispatch(navigateAction); 
 		      		}
 		        })
 		    )

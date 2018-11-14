@@ -1,12 +1,9 @@
 import React, {Component} from 'react';
-import { Text, AsyncStorage, View } from 'react-native';
+import { AsyncStorage } from 'react-native';
 
 import Preloader from "./app/components/Preloader";
 import GuestNavigation from './app/navigations/guest';
-import HomeScreen from './app/screens/HomeScreen';
-import AiportsScreen from './app/screens/AirportsScreen';
-
-
+import LoggedNavigation from './app/navigations/logged';
 
 
 export default class App extends Component {
@@ -41,8 +38,7 @@ export default class App extends Component {
     }
 
     if(isLogged) {
-      return (<AiportsScreen/>);
-      //this.props.navigation.navigate('Home');	  
+      return (<LoggedNavigation />);
     } else {
       return (<GuestNavigation />);
     }
