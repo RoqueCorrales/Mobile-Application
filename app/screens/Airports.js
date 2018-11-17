@@ -1,12 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
+// import { FlatList } from 'react-native-gesture-handler';
 import { List, ListItem } from 'react-native-elements';
 
 
-export default class Airports extends Component {
+export default class Airports extends React.Component {
 
-  constructor (props) {
+  constructor(props) {
     super(props);
+
     this.state = {
       loading: false,
       airports: [],
@@ -15,67 +17,62 @@ export default class Airports extends Component {
   }
 
   componentDidMount() {
-    this.getPokemons();
-
+    if (this.state.airports && this.state.airports.length === 0) this.getAirports();
+    console.log(this.state.airports);
   }
 
-  getPokemons = () => {
+  getAirports = () => {
     this.setState({ loading: true })
     fetch(this.state.url)
       .then(res => res.json()
-      .then(resJson => {
-        this.setState({
-          airports: resJson.airports,
-          url: res.next,
-          loading: false
+        .then(resJson => {
+          this.setState({
+            airports: resJson.airports,
+            url: res.next,
+            loading: false
+          })
         })
-      })
-      .catch(error => {
-        console.log(error)
-      }));
-      console.log(this.state.airports.length);
-  }
-
-  renderItems ( item ) {
-    return (
-      <ListItem
-        title={item.name}
-        subtitle={`${item.city} - ${item.countryName}`}
-      />
-    )
+        .catch(error => {
+          console.log(error)
+        }));
   }
 
   render() {
-    const {loading, airports} = this.state;
-
-    if (loading) {
-        return ( <View style = {styles.container} >
-            <Text > Descargando aeropuertos! < /Text> 
-            </View>
-        );
-    }
-    if (airports.length > 0) {
-        return ( 
-          <View style = {{flex: 1, paddingTop: 50, paddingLeft: 5}} >
-              <FlatList
-                data={airports}
-                renderItem={({item}) => 
-                  this.renderItems(item)
-                }
-                keyExtractor={(x, i) => i}
-              />
-          </View>
-        );
-    }
-
-    return ( 
-        <View style = {styles.container} >
-            <Text > No se pudo descargar! < /Text> 
+    if (this.state.loading) {
+      return (
+        <View style={styles.container}>
+          <Text>Descargnado aeropuertos!</Text>
         </View>
+      );
+    }
+
+    if (this.state.airports.length > 0) {
+      return (
+        <View style>
+          <List>
+            <FlatList
+              data={this.state.airports}
+              keyExtractor={(x, i) => i}
+              renderItem={({ item }) =>
+                <ListItem
+                  title={item.name}
+                  subtitle={`${item.city} - ${item.countryName}`}
+                />
+              }
+            />
+          </List>
+        </View>
+      );
+    }
+
+    return (
+      <View style={styles.container}>
+        <Text>No se pudo descargar!</Text>
+      </View>
     );
+
   }
 }
-
 
 const styles = StyleSheet.create({
   container: {

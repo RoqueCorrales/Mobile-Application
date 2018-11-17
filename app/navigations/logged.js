@@ -2,6 +2,7 @@ import React from 'react';
 
 import HomeScreen from "../screens/Home";
 import AirportsScreen from "../screens/Airports";
+import AirlinesScreen from '../screens/Airlines';
 
 import {DrawerNavigator, StackNavigator} from "react-navigation";
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -10,6 +11,7 @@ const navigationOptions = {
 	navigationOptions: {
 		headerStyle: {
 			backgroundColor: 'rgba(200, 38, 74, 1)',
+			marginBottom: 0
 		},
 		headerTitleStyle: {
 			textAlign: 'center',
@@ -42,7 +44,7 @@ const airportsScreenStack = StackNavigator(
 		ListAirports: {
 			screen: AirportsScreen,
 			navigationOptions: ({navigation}) => ({
-				title: 'Aeropuertos',
+				title: 'Airports',
 				drawerIcon: ({tintColor}) => (<Icon name="home" size={24} style={{color: tintColor}} />),
 				headerLeft: leftIcon(navigation, 'bars')
 			})
@@ -73,6 +75,20 @@ const homeScreenStack = StackNavigator(
 	},
 	navigationOptions
 );
+
+const airlinesScreenStack = StackNavigator(
+	{
+		ListAirlines: {
+			screen: AirlinesScreen,
+			navigationOptions: ({ navigation }) => ({
+				title: 'Airlines',
+				drawerIcon: ({ tintColor }) => (<Icon name="home" size={24} style={{ color: tintColor }} />),
+				headerLeft: leftIcon(navigation, 'bars')
+			})
+		}
+	},
+	navigationOptions
+);
 /*
 const logoutScreenStack = StackNavigator({
 	LogoutScreen: {
@@ -91,6 +107,9 @@ export default DrawerNavigator(
 		},
 		HomeScreen: {
 			screen: homeScreenStack
+		},
+		AirlinesScreen: {
+			screen: airlinesScreenStack
 		}
 	},
 	{
