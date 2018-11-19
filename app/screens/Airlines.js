@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
 // import { FlatList } from 'react-native-gesture-handler';
 import { List, ListItem } from 'react-native-elements';
+import Preloader from '../components/Preloader'
 
 
 export default class Airlines extends React.Component {
@@ -39,9 +40,7 @@ export default class Airlines extends React.Component {
     render() {
         if (this.state.loading) {
             return (
-                <View style={styles.container}>
-                    <Text>Descargnado aeropuertos!</Text>
-                </View>
+                <Preloader />
             );
         }
 

@@ -3,6 +3,7 @@ import React from 'react';
 import HomeScreen from "../screens/Home";
 import AirportsScreen from "../screens/Airports";
 import AirlinesScreen from '../screens/Airlines';
+import AirportLocationScreen from '../screens/AirportLocation';
 
 import {DrawerNavigator, StackNavigator} from "react-navigation";
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -89,6 +90,20 @@ const airlinesScreenStack = StackNavigator(
 	},
 	navigationOptions
 );
+
+const airportLocationScreenStack = StackNavigator(
+	{
+		AirportLocation: {
+			screen: AirportLocationScreen,
+			navigationOptions: ({ navigation }) => ({
+				title: 'Airport Location',
+				drawerIcon: ({ tintColor }) => (<Icon name="home" size={24} style={{ color: tintColor }} />),
+				headerLeft: leftIcon(navigation, 'bars')
+			})
+		}
+	},
+	navigationOptions
+);
 /*
 const logoutScreenStack = StackNavigator({
 	LogoutScreen: {
@@ -110,6 +125,9 @@ export default DrawerNavigator(
 		},
 		AirlinesScreen: {
 			screen: airlinesScreenStack
+		},
+		AirportLocationScreen: {
+			screen: airportLocationScreenStack
 		}
 	},
 	{
