@@ -5,7 +5,7 @@ import AirportsScreen from "../screens/Airports";
 import AirlinesScreen from '../screens/Airlines';
 import AirportLocationScreen from '../screens/AirportLocation';
 
-import {DrawerNavigator, StackNavigator} from "react-navigation";
+import {createDrawerNavigator, createStackNavigator} from "react-navigation";
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const navigationOptions = {
@@ -29,7 +29,7 @@ const leftIcon = (navigation, icon) => <Icon
 	style={{marginLeft: 20}}
 	size={20}
 	color="white"
-	onPress={() => navigation.navigate('DrawerOpen')}
+	onPress={() => navigation.openDrawer()}
 />;
 
 const rightIcon = (navigation, icon) => <Icon
@@ -40,13 +40,12 @@ const rightIcon = (navigation, icon) => <Icon
 	onPress={() => navigation.navigate('ListAirports')}
 />;
 
-const airportsScreenStack = StackNavigator(
+const airportsScreenStack = createStackNavigator(
 	{
 		ListAirports: {
 			screen: AirportsScreen,
 			navigationOptions: ({navigation}) => ({
 				title: 'Airports',
-				drawerIcon: ({tintColor}) => (<Icon name="home" size={24} style={{color: tintColor}} />),
 				headerLeft: leftIcon(navigation, 'bars')
 			})
 		}/*,
@@ -62,13 +61,12 @@ const airportsScreenStack = StackNavigator(
 	navigationOptions
 );
 
-const homeScreenStack = StackNavigator(
+const homeScreenStack = createStackNavigator(
 	{
 		HomeScreen: {
 			screen: HomeScreen,
 			navigationOptions: ({ navigation }) => ({
 				title: 'Home',
-				drawerIcon: ({ tintColor }) => (<Icon name="home" size={24} style={{ color: tintColor }} />),
 				headerLeft: leftIcon(navigation, 'bars'),
 				headerRight: rightIcon(navigation, 'home'),
 			})
@@ -77,13 +75,12 @@ const homeScreenStack = StackNavigator(
 	navigationOptions
 );
 
-const airlinesScreenStack = StackNavigator(
+const airlinesScreenStack = createStackNavigator(
 	{
 		ListAirlines: {
 			screen: AirlinesScreen,
 			navigationOptions: ({ navigation }) => ({
 				title: 'Airlines',
-				drawerIcon: ({ tintColor }) => (<Icon name="home" size={24} style={{ color: tintColor }} />),
 				headerLeft: leftIcon(navigation, 'bars')
 			})
 		}
@@ -91,43 +88,48 @@ const airlinesScreenStack = StackNavigator(
 	navigationOptions
 );
 
-const airportLocationScreenStack = StackNavigator(
+const airportLocationScreenStack = createStackNavigator(
 	{
 		AirportLocation: {
 			screen: AirportLocationScreen,
 			navigationOptions: ({ navigation }) => ({
 				title: 'Airport Location',
-				drawerIcon: ({ tintColor }) => (<Icon name="home" size={24} style={{ color: tintColor }} />),
 				headerLeft: leftIcon(navigation, 'bars')
 			})
 		}
 	},
 	navigationOptions
 );
-/*
-const logoutScreenStack = StackNavigator({
-	LogoutScreen: {
-		screen: LogoutScreen,
-		navigationOptions: ({ navigation }) => ({
-			title: 'Cerrar sesión',
-			drawerIcon: ({ tintColor }) => (<Icon name="sign-out" size={24} style={{color: tintColor}} />)
-		})
-	}
-});*/
 
-export default DrawerNavigator(
+export default createDrawerNavigator(
 	{
 		AirportsScreen: {
-			screen: airportsScreenStack
+			screen: airportsScreenStack,
+			navigationOptions: ({ navigation }) => ({
+				drawerLabel: 'Airports',
+				drawerIcon: ({tintColor}) => (<Icon name="home" size={30} style={{color: tintColor}} />),
+			  })
 		},
 		HomeScreen: {
-			screen: homeScreenStack
+			screen: homeScreenStack,
+			navigationOptions: ({ navigation }) => ({
+				drawerLabel: 'Home',
+				drawerIcon: ({tintColor}) => (<Icon name="home" size={30} style={{color: tintColor}} />),
+			  })
 		},
 		AirlinesScreen: {
-			screen: airlinesScreenStack
+			screen: airlinesScreenStack,
+			navigationOptions: ({ navigation }) => ({
+				drawerLabel: 'Airlines',
+				drawerIcon: ({tintColor}) => (<Icon name="home" size={30} style={{color: tintColor}} />),
+			  })
 		},
 		AirportLocationScreen: {
-			screen: airportLocationScreenStack
+			screen: airportLocationScreenStack,
+			navigationOptions: ({ navigation }) => ({
+				drawerLabel: 'Airport Location',
+				drawerIcon: ({tintColor}) => (<Icon name="home" size={30} style={{color: tintColor}} />),
+			  })
 		}
 	},
 	{
