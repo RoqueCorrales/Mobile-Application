@@ -7,8 +7,10 @@ export default class AirportLocation extends React.Component {
 
     constructor(props) {
         super(props);
-
+        const {params} = props.navigation.state;
         this.state = {
+            latitude: params.latitude,
+            longitude: params.longitude,
             loading: false,
             airport: [],
         }
@@ -19,23 +21,23 @@ export default class AirportLocation extends React.Component {
     }
 
     render() {
-        const latitude = this.props.navigation.getParam('latitude', 'nada');
-        const longitude = this.props.navigation.getParam('longitude', 'nada');
+        const {latitude, longitude} = this.state;
+        console.log(this.state);
         return (
             <View style={styles.container}>
                 <MapView
                     style={styles.map}
                     initialRegion={{
-                        latitude: 31.987639,
-                        longitude: -89.245056,
+                        latitude: latitude,
+                        longitude: longitude,
                         latitudeDelta: 0.0922,
                         longitudeDelta: 0.0421
                     }}>
 
                         <MapView.Marker
                             coordinate={{
-                                latitude: 31.987639,
-                                longitude: -89.245056
+                                latitude: latitude,
+                                longitude: longitude
                             }}>
 
                                 <View style={styles.radius}>

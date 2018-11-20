@@ -5,6 +5,7 @@ import Preloader from "./app/components/Preloader";
 import GuestNavigation from './app/navigations/guest';
 import LoggedNavigation from './app/navigations/logged';
 
+console.disableYellowBox = true;
 
 export default class App extends Component {
   constructor (props) {

@@ -2,7 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
 // import { FlatList } from 'react-native-gesture-handler';
 import { List, ListItem } from 'react-native-elements';
-import Preloader from '../components/Preloader'
+import Preloader from '../components/Preloader';
+import { NavigationActions } from 'react-navigation';
 
 
 export default class Airports extends React.Component {
@@ -56,11 +57,15 @@ export default class Airports extends React.Component {
                 <ListItem
                   title={item.name}
                   subtitle={`${item.city} - ${item.countryName}`}
-                  onPress={(item) => {
-                    this.props.navigation.navigate('AirportLocationScreen', {
-                      latitude: item.latitude,
-                      longitude: item.longitude
-                    });
+                  onPress={() => {
+					const navigateAction = NavigationActions.navigate({
+						routeName: 'AirportLocation',
+						params: {
+							latitude: item.latitude,
+							longitude: item.longitude
+						}
+					});
+					this.props.navigation.dispatch(navigateAction);
                   }}
                 />
               }
