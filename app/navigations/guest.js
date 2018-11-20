@@ -4,12 +4,12 @@ import LoginScreen from "../screens/Login";
 
 export default createStackNavigator (
 	{
-		Login: {
+		LoginScreen: {
 			screen: LoginScreen
 		}
 	},
 	{
-		initialRouteName: 'Login',
+		initialRouteName: 'LoginScreen',
 		navigationOptions: {
 			headerStyle: {
 				backgroundColor: '#1e68f4'

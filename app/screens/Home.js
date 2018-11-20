@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, AsyncStorage } from 'react-native';
 import { NavigationActions } from 'react-navigation';
-
+import Toast from 'react-native-simple-toast';
 import AppButton from '../components/AppButton';
 
 export default class Home extends Component {
@@ -23,9 +23,9 @@ export default class Home extends Component {
       AsyncStorage.removeItem('token');
       Toast.showWithGravity("Has cerrado sesión correctamente", Toast.LONG, Toast.BOTTOM);
       const navigateAction = NavigationActions.navigate({
-        routeName: 'Login'
+        routeName: 'LoginScreen'
       });
-      this.props.navigation.dispatch(navigateAction);
+      this.props.navigation.navigate(navigateAction);
     } catch (error) {
       console.log('AsyncStorage error: ' + error.message);
     }

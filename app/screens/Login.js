@@ -71,12 +71,13 @@ export default class Login extends Component {
 		      			Toast.showWithGravity('Invalid credentials', Toast.LONG, Toast.BOTTOM);
 		      		}else{
 		      			this.saveToken(resJson.token_type + ' ' + resJson.access_token);
-						Toast.showWithGravity("Welcome!", Toast.LONG, Toast.BOTTOM);
+
 						
 						const navigateAction = NavigationActions.navigate({
-							routeName: 'Home'
+							routeName: 'HomeScreen'
 						});
-						this.props.navigation.dispatch(navigateAction); 
+						this.props.navigation.navigate(navigateAction); 
+												Toast.showWithGravity("Welcome!", Toast.LONG, Toast.BOTTOM);
 		      		}
 		        })
 		    )
@@ -95,7 +96,7 @@ export default class Login extends Component {
 
 	render () {
 		return (
-			<View style={{justifyContent: 'center', flex: 1}}>
+			<View>
 				<Card title="Log In">
 					<Form
 						ref="form"
