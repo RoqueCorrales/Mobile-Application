@@ -23,7 +23,7 @@ export default class Home extends Component {
       AsyncStorage.removeItem('token');
       Toast.showWithGravity("Has cerrado sesión correctamente", Toast.LONG, Toast.BOTTOM);
       const navigateAction = NavigationActions.navigate({
-        routeName: 'LoginScreen'
+        routeName: 'Auth'
       });
       this.props.navigation.navigate(navigateAction);
     } catch (error) {

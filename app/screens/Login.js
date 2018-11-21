@@ -74,10 +74,10 @@ export default class Login extends Component {
 
 						
 						const navigateAction = NavigationActions.navigate({
-							routeName: 'HomeScreen'
+							routeName: 'Home'
 						});
 						this.props.navigation.navigate(navigateAction); 
-												Toast.showWithGravity("Welcome!", Toast.LONG, Toast.BOTTOM);
+						Toast.showWithGravity("Welcome!", Toast.LONG, Toast.BOTTOM);
 		      		}
 		        })
 		    )
