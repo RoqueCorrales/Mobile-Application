@@ -58,14 +58,14 @@ export default class Airports extends React.Component {
                   title={item.name}
                   subtitle={`${item.city} - ${item.countryName}`}
                   onPress={() => {
-					const navigateAction = NavigationActions.navigate({
-						routeName: 'AirportLocation',
-						params: {
-							latitude: item.latitude,
-							longitude: item.longitude
-						}
-					});
-					this.props.navigation.dispatch(navigateAction);
+                    const navigateAction = NavigationActions.navigate({
+                      routeName: 'AirportLocationScreen',
+                      params: {
+                        latitude: item.latitude,
+                        longitude: item.longitude
+                      }
+                    });
+                    this.props.navigation.dispatch(navigateAction);
                   }}
                 />
               }
