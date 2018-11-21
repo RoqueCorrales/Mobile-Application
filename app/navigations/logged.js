@@ -1,36 +1,49 @@
 import React from 'react';
 
+import { createBottomTabNavigator, createStackNavigator } from 'react-navigation';
+import { Icon } from 'react-native-elements';
+
+
+//Screens
 import HomeScreen from "../screens/Home";
 import AirportsScreen from "../screens/Airports";
 import AirlinesScreen from '../screens/Airlines';
 import AirportLocationScreen from '../screens/AirportLocation';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import { createBottomTabNavigator } from 'react-navigation';
 
-export default createBottomTabNavigator({
-  Home: { screen: HomeScreen },
-  Airports: { screen: AirportsScreen },
-  Airlines: { screen: AirlinesScreen },
-  AirportLocation: { screen: AirportLocationScreen },
-},
-  {
-    defaultNavigationOptions: ({ navigation }) => ({
-      tabBarIcon: ({ focused, horizontal, tintColor }) => {
-        const { routeName } = navigation.state;
-        let iconName;
-        if (routeName === 'Home') {
-          iconName = `ios-information-circle${focused ? '' : '-outline'}`;
-        } else if (routeName === 'Settings') {
-          iconName = `ios-options${focused ? '' : '-outline'}`;
-        }
 
-        // You can return any component that you like here! We usually use an
-        // icon component from react-native-vector-icons
-        return <Ionicons name={iconName} size={horizontal ? 20 : 25} color={tintColor} />;
-      },
-    }),
-    tabBarOptions: {
-      activeTintColor: 'tomato',
-      inactiveTintColor: 'gray',
-    },
+
+const HomeStack = createStackNavigator({
+    Home: HomeScreen,
+    AirlinesScreen: AirlinesScreen,
   });
+  
+  const AirportsStack = createStackNavigator({
+    AirportsScreen: AirportsScreen,
+    AirportLocationScreen: AirportLocationScreen,
+  });
+  
+  export default createBottomTabNavigator(
+    {
+      Home: {screen: HomeStack,
+            navigationOptions:{
+                tabBarLabel: 'Inicio',
+                tabBarIcon: ({tintColor})=>(
+                    <Icon name="home" size={20} />
+                )
+            }
+    },
+      Airports: {screen: AirportsStack,
+                navigationOptions:{
+                    tabBarLabel: 'Aeropuertos',
+                    tabBarIcon: ({tintColor})=>(
+                        <Icon name="local-airport" size={20} />
+                    )
+                }
+        },
+    },
+
+
+    {
+      /* Other configuration remains unchanged */
+    }
+  );
