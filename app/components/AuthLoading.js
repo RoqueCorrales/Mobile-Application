@@ -17,7 +17,7 @@ export default class AuthLoading extends Component {
 	render () {
 		return (
 			<View style={[styles.preloader]}>
-				<ActivityIndicator style={{height: 80}} size="large" />
+				<ActivityIndicator style={{height: 80}} size="large" color="#4286f4" />
 			</View>
 		)
 	}
@@ -30,6 +30,6 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center',
 		height: height,
-		backgroundColor: '#242935'
+		backgroundColor: '#ededed'
 	}
 });

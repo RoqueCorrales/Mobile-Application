@@ -119,7 +119,7 @@ export default class Login extends Component {
 						bgColor="#0c961e"
 						title="Log In"
 						action={this.login.bind(this)}
-						iconName="sign-in"
+						iconName="chevron-right"
 						iconSize={30}
 						iconColor="#fff"
 					/>
@@ -128,7 +128,7 @@ export default class Login extends Component {
 						bgColor="#960b20"
 						title="Register"
 						action={this.register.bind(this)}
-						iconName="user-plus"
+						iconName="person-add"
 						iconSize={30}
 						iconColor="#fff"
 					/>

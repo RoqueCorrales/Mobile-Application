@@ -61,7 +61,7 @@ const AppTabs =  createBottomTabNavigator(
       navigationOptions: {
         tabBarLabel: 'Airlines',
         tabBarIcon: ({ tintColor }) => (
-          <Icon name="local-airport" color={tintColor} size={20} />
+          <Icon name="airline-seat-recline-normal" color={tintColor} size={20} />
         )
       }
     }

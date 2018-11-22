@@ -38,7 +38,7 @@ export default class Home extends Component {
             bgColor="#4286f4"
             title="Log out"
             action={this.logout.bind(this)}
-            iconName="sign-out"
+            iconName="chevron-left"
             iconSize={30}
             iconColor="#fff"
             setWidth='1'

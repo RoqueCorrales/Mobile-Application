@@ -7,6 +7,7 @@ export default class AppButton extends Component {
 	render () {
 		const {action, iconName, iconColor, title, bgColor, setWidth} = this.props;
 		const {width} = setWidth ? Dimensions.get('window') : {};
+		console.log(iconName);
 		return (
 			<Button
 				onPress={action}
@@ -20,15 +21,11 @@ export default class AppButton extends Component {
 					width: width
 				}}
 				title={title}
-				icon={
-					<Icon
-						name={iconName}
-						size={15}
-						color={iconColor}
-					/>
-				}
+				rightIcon={{ name: iconName, 
+					size: 15,
+					color:iconColor
+				}}
 				text={title}
-				iconRigh={true}
 			>
 			</Button>
 		);
