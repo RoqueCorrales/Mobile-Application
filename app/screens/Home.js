@@ -23,7 +23,7 @@ export default class Home extends Component {
       AsyncStorage.removeItem('token');
       Toast.showWithGravity("Has cerrado sesión correctamente", Toast.LONG, Toast.BOTTOM);
       const navigateAction = NavigationActions.navigate({
-        routeName: 'Auth'
+        routeName: 'AuthLoading'
       });
       this.props.navigation.navigate(navigateAction);
     } catch (error) {
@@ -35,12 +35,13 @@ export default class Home extends Component {
     return (
       <View style={styles.container}>
         <AppButton
-            bgColor="#0c961e"
+            bgColor="#4286f4"
             title="Log out"
             action={this.logout.bind(this)}
             iconName="sign-out"
             iconSize={30}
             iconColor="#fff"
+            setWidth='1'
           />
       </View>
     );
@@ -54,7 +55,7 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'space-around',
+    justifyContent: 'space-around'
   },
   navBtn: {
     flexGrow: 10

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import {Card} from "react-native-elements";
 
 export default class Register extends Component {
@@ -16,7 +16,7 @@ export default class Register extends Component {
 		return (
 			<View>
 				<Card title="Sign Up">
-					hola
+					<Text>hola</Text>
 				</Card>
 			</View>
 		);

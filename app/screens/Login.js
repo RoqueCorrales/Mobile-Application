@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { View, AsyncStorage } from 'react-native';
+import { View, AsyncStorage, StyleSheet } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import Toast from 'react-native-simple-toast';
 import t from 'tcomb-form-native';
@@ -8,7 +8,7 @@ import {Card} from "react-native-elements";
 import FormValidation from '../utils/Validation';
 import AppButton from '../components/AppButton';
 import Config from '../utils/Config';
-
+import Preloader from '../components/Preloader';
 
 const Form = t.form.Form;
 
@@ -16,6 +16,10 @@ export default class Login extends Component {
 
 	constructor(props) {
 		super(props);
+
+		this.state = {
+      		loading: false,
+	    }
 
 		this.user = t.struct({
 			email: FormValidation.email,
@@ -52,6 +56,7 @@ export default class Login extends Component {
 	}
 
 	login () {
+		this.setState({ loading: true })
 		const validate = this.refs.form.getValue();
 		if(validate) {
 			fetch(Config.API_LOCAL+'login',{
@@ -79,6 +84,7 @@ export default class Login extends Component {
 						this.props.navigation.navigate(navigateAction); 
 						Toast.showWithGravity("Welcome!", Toast.LONG, Toast.BOTTOM);
 		      		}
+		      		this.setState({ loading: false })
 		        })
 		    )
 	      	.catch(error => {
@@ -88,15 +94,21 @@ export default class Login extends Component {
 	}
 
 	register () {
-		/*const navigateAction = NavigationActions.navigate({
+		const navigateAction = NavigationActions.navigate({
 			routeName: 'Register'
 		});
-		this.props.navigation.dispatch(navigateAction);*/
+		this.props.navigation.dispatch(navigateAction);
 	}
 
 	render () {
+		if (this.state.loading) {
+		    return (
+		        <Preloader />
+		    );
+	    }
+
 		return (
-			<View>
+			<View style={styles.container}>
 				<Card title="Log In">
 					<Form
 						ref="form"
@@ -111,8 +123,23 @@ export default class Login extends Component {
 						iconSize={30}
 						iconColor="#fff"
 					/>
+
+					<AppButton
+						bgColor="#960b20"
+						title="Register"
+						action={this.register.bind(this)}
+						iconName="user-plus"
+						iconSize={30}
+						iconColor="#fff"
+					/>
 				</Card>
 			</View>
 		);
 	}
 }
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#f2f2f2',
+  }
+});

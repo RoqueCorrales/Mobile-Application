@@ -43,7 +43,7 @@ const AppTabs =  createBottomTabNavigator(
       navigationOptions: {
         tabBarLabel: 'Home',
         tabBarIcon: ({ tintColor }) => (
-          <Icon name="home" size={20} />
+          <Icon name="home" color={tintColor} size={20} />
         )
       }
     },
@@ -73,8 +73,8 @@ const AppTabs =  createBottomTabNavigator(
       tabBarVisible: true
     },
     tabBarOptions:{
-      activeTintColor: 'blue',
-      inactiveTintColor: 'green'
+      activeTintColor: '#4286f4',
+      inactiveTintColor: '#bcbcbc'
     }
   }
 );
