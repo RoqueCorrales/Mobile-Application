@@ -18,6 +18,10 @@ export default class Airlines extends React.Component {
     }
   }
 
+  static navigationOptions = {
+    title: 'Airlines'
+  }
+
   componentDidMount() {
     if (this.state.airlines && this.state.airlines.length === 0) this.getAirlines();
   }

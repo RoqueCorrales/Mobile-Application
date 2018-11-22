@@ -18,6 +18,7 @@ export default class AirlineDetail extends React.Component {
     }
   }
 
+
   componentDidMount() {
     this.getAirlineById();
   }

@@ -13,6 +13,7 @@ import AirportsScreen from "../screens/Airports";
 import AirlinesScreen from '../screens/Airlines';
 import AirportLocationScreen from '../screens/AirportLocation';
 import AirlineDetailScreen from '../screens/AirlineDetail';
+import AirportFinderScreen from '../screens/AirportFinder';
 
 const AuthStack = createStackNavigator({
   Login: LoginScreen,
@@ -27,6 +28,7 @@ const HomeStack = createStackNavigator({
 const AirportsStack = createStackNavigator({
   AirportsScreen: AirportsScreen,
   AirportLocationScreen: AirportLocationScreen,
+  AirportFinderScreen: AirportFinderScreen
 });
 
 const AirlinesStack = createStackNavigator({

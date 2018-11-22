@@ -1,6 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
-// import { FlatList } from 'react-native-gesture-handler';
+import { StyleSheet, Text, View, FlatList, Button } from 'react-native';
 import { List, ListItem } from 'react-native-elements';
 import Preloader from '../components/Preloader';
 import { NavigationActions } from 'react-navigation';
@@ -16,6 +15,10 @@ export default class Airports extends React.Component {
       airports: [],
       url: 'https://api.flightstats.com/flex/airports/rest/v1/json/active?appId=44cee9e5&appKey=8a2ebed0d4d47e7005a060f5f20fa118'
     }
+  }
+
+  static navigationOptions = {
+    title: 'Airports'
   }
 
   componentDidMount() {
@@ -39,6 +42,13 @@ export default class Airports extends React.Component {
         }));
   }
 
+  // navigateToFinder = () => {
+  //   const navigateAction = NavigationActions.navigate({
+  //     routeName: 'AirportFinderScreen',
+  //   });
+  //   this.props.navigation.dispatch(navigateAction);
+  // }
+
   render() {
     if (this.state.loading) {
       return (
@@ -47,8 +57,17 @@ export default class Airports extends React.Component {
     }
 
     if (this.state.airports.length > 0) {
+      const navigateToFinderAction = NavigationActions.navigate({
+        routeName: 'AirportFinderScreen',
+      });
       return (
         <View style>
+          <Button 
+            title='Find near airports'
+            onPress={() =>
+              this.props.navigation.dispatch(navigateToFinderAction)
+            }
+          />
           <List>
             <FlatList
               data={this.state.airports}
@@ -62,7 +81,8 @@ export default class Airports extends React.Component {
                       routeName: 'AirportLocationScreen',
                       params: {
                         latitude: item.latitude,
-                        longitude: item.longitude
+                        longitude: item.longitude,
+                        name: item.name
                       }
                     });
                     this.props.navigation.dispatch(navigateAction);
@@ -94,5 +114,9 @@ const styles = StyleSheet.create({
   heading: {
     textAlign: 'center',
     fontWeight: 'bold'
+  },
+  button: {
+    flex: 1,
+    justifyContent: 'center'
   }
 });
