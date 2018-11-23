@@ -42,8 +42,6 @@ export default class Login extends Component {
 			}
 		};
 	}
-
-
 	static navigationOptions = {
 		title: 'Flight Stats'
 	};
@@ -68,7 +66,7 @@ export default class Login extends Component {
 			  	body: JSON.stringify({
 			        email: validate.email,
 			        password: validate.password
-			      })
+			    })
 			})
 		  	.then(res => res.json()
 		      	.then(resJson => {
@@ -76,15 +74,13 @@ export default class Login extends Component {
 		      			Toast.showWithGravity('Invalid credentials', Toast.LONG, Toast.BOTTOM);
 		      		}else{
 		      			this.saveToken(resJson.token_type + ' ' + resJson.access_token);
-
-						
 						const navigateAction = NavigationActions.navigate({
 							routeName: 'Home'
 						});
 						this.props.navigation.navigate(navigateAction); 
 						Toast.showWithGravity("Welcome!", Toast.LONG, Toast.BOTTOM);
 		      		}
-		      		this.setState({ loading: false })
+		      		this.setState({ loading: false });
 		        })
 		    )
 	      	.catch(error => {
