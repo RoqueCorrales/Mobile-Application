@@ -23,9 +23,7 @@ export default class Airports extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.state.airports.length);
         if (this.state.airports && this.state.airports.length === 0) this.getAirports();
-        console.log(this.state.airports);
     }
 
     getAirports = () => {

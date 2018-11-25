@@ -5,6 +5,7 @@ import { Icon } from 'react-native-elements';
 
 //Components
 import AuthLoadingComponent from "../components/AuthLoading";
+
 //Screens
 import LoginScreen from "../screens/Login";
 import RegisterScreen from "../screens/Register";
@@ -14,6 +15,8 @@ import AirlinesScreen from '../screens/Airlines';
 import AirportLocationScreen from '../screens/AirportLocation';
 import AirlineDetailScreen from '../screens/AirlineDetail';
 import AirportFinderScreen from '../screens/AirportFinder';
+import AirportScreen from '../screens/Rating/Airport';
+import FlightsScreen from '../screens/Rating/Flights';
 
 const AuthStack = createStackNavigator({
   Login: LoginScreen,
@@ -31,9 +34,14 @@ const AirportsStack = createStackNavigator({
   AirportFinderScreen: AirportFinderScreen
 });
 
+const RatingStack = createStackNavigator({
+  AirportScreen: AirportScreen,
+  FlightsScreen: FlightsScreen
+});
+
 const AirlinesStack = createStackNavigator({
   Airlines: AirlinesScreen,
-  AirlineDetailScreen: AirlineDetailScreen,
+  AirlineDetailScreen: AirlineDetailScreen
 })
 
 const AppTabs =  createBottomTabNavigator(
@@ -56,6 +64,15 @@ const AppTabs =  createBottomTabNavigator(
         )
       }
     },
+    Rating: {
+      screen: RatingStack,
+      navigationOptions: {
+        tabBarLabel: 'Ratings',
+        tabBarIcon: ({ tintColor }) => (
+          <Icon name="star" color={tintColor} size={20} />
+        )
+      }
+    },
     Airlines: {
       screen: AirlinesStack,
       navigationOptions: {
@@ -68,7 +85,7 @@ const AppTabs =  createBottomTabNavigator(
   },
   {
     initialRouteName: 'Home',
-    order: ['Home', 'Airlines', 'Airports'],
+    order: ['Home', 'Airlines', 'Airports', 'Rating'],
     navigationOptions:{
       tabBarVisible: true
     },
