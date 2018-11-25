@@ -17,6 +17,7 @@ import AirlineDetailScreen from '../screens/AirlineDetail';
 import AirportFinderScreen from '../screens/AirportFinder';
 import AirportScreen from '../screens/Rating/Airport';
 import FlightsScreen from '../screens/Rating/Flights';
+import FlightRatingScreen from '../screens/Rating/FlightRating';
 
 const AuthStack = createStackNavigator({
   Login: LoginScreen,
@@ -36,7 +37,8 @@ const AirportsStack = createStackNavigator({
 
 const RatingStack = createStackNavigator({
   AirportScreen: AirportScreen,
-  FlightsScreen: FlightsScreen
+  FlightsScreen: FlightsScreen,
+  FlightRatingScreen: FlightRatingScreen
 });
 
 const AirlinesStack = createStackNavigator({

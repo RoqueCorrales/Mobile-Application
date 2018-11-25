@@ -36,8 +36,6 @@ export default class Flights extends React.Component {
                     flights: resJson.fidsData,
                     loading: false
                 });
-              console.log(resJson.fidsData);
-
             })
             .catch(error => {
               console.log(error)
@@ -45,16 +43,43 @@ export default class Flights extends React.Component {
       }
 
     render() {
-        if (this.state.loading) {
-        return (
-            <Preloader />
-        );
+        const {loading, flights} = this.state;
+        if (loading) {
+            return (
+                <Preloader />
+            );
         }
-
+        if (flights.length > 0) {
+            return (
+                <View>
+                    <List>
+                        <FlatList
+                        data={flights}
+                        keyExtractor={(x, i) => i}
+                        renderItem={({ item }) =>
+                            <ListItem
+                            title={item.flight}
+                            subtitle={'Airline: ' + item.airlineName}
+                            onPress={() => {
+                                const navigateAction = NavigationActions.navigate({
+                                routeName: 'FlightRatingScreen',
+                                    params: {
+                                        flight: item,
+                                    }
+                                });
+                                this.props.navigation.dispatch(navigateAction);
+                            }}
+                            />
+                        }
+                        />
+                    </List>
+                </View>
+            );
+        }
         return (
-        <View style={styles.container}>
-            <Text>No se pudo descargar!</Text>
-        </View>
+            <View style={styles.container}>
+                <Text>Not found flights for this airport!</Text>
+            </View>
         );
 
     }
