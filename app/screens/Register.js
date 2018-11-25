@@ -40,14 +40,13 @@ export default class Register extends Component {
 			})
 		  	.then(res => res.json()
 		      	.then(resJson => {
-		      		console.log(resJson);
-		      		if (resJson.error) {
-		      			Toast.showWithGravity(resJson.error, Toast.LONG, Toast.BOTTOM);
+		      		if (resJson.errors) {
+		      			Toast.showWithGravity('Los datos enviados no son válidos.', Toast.LONG, Toast.BOTTOM);
 		      		}else{
 		      			this.props.navigation.goBack();
-						Toast.showWithGravity("registro!", Toast.LONG, Toast.BOTTOM);
+						Toast.showWithGravity("Usuario Registrado", Toast.LONG, Toast.BOTTOM);
 		      		}
-		      		
+		      		this.setState({ loading: false });
 		        })
 		    )
 	      	.catch(error => {

@@ -70,6 +70,7 @@ export default class Login extends Component {
 			})
 		  	.then(res => res.json()
 		      	.then(resJson => {
+					console.log(resJson);
 		      		if (resJson.error) {
 		      			Toast.showWithGravity('Invalid credentials', Toast.LONG, Toast.BOTTOM);
 		      		}else{

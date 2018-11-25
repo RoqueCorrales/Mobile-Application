@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import Preloader from '../components/Preloader'
 import { Card } from 'react-native-elements'
+import Config from '../utils/Config';
 
 
 export default class AirlineDetail extends React.Component {
@@ -14,7 +15,7 @@ export default class AirlineDetail extends React.Component {
       loading: false,
       airline: {},
       airlineId: params.airlineId,
-      url: 'https://api.flightstats.com/flex/airlines/rest/v1/json/fs/active?appId=44cee9e5&appKey=8a2ebed0d4d47e7005a060f5f20fa118'
+      url: `${Config.API_FLIGHT}airlines/rest/v1/json/fs/active?appId=${Config.APP_ID}&appKey=${Config.APP_KEY}`
     }
   }
 
@@ -25,7 +26,7 @@ export default class AirlineDetail extends React.Component {
 
   getAirlineById = () => {
     this.setState({ loading: true })
-    fetch(`https://api.flightstats.com/flex/airlines/rest/v1/json/fs/${this.state.airlineId}?appId=44cee9e5&appKey=8a2ebed0d4d47e7005a060f5f20fa118`)
+    fetch(`${Config.API_FLIGHT}airlines/rest/v1/json/fs/${this.state.airlineId}?appId=${Config.APP_ID}&appKey=${Config.APP_KEY}`)
       .then(res => res.json()
         .then(resJson => {
           this.setState({

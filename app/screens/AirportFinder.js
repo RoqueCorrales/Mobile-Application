@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Dimensions, View, Text, Slider } from 'react-native';
 import MapView from 'react-native-maps';
+import Config from '../utils/Config';
 
 let { width, height } = Dimensions.get('window');
 
@@ -31,7 +32,7 @@ export default class AirportFinder extends React.Component {
   getNearAirports = (miles) => {
     this.setState({ loading: true })
     const { latitude, longitude } = this.state.userCoords;
-    fetch(`https://api.flightstats.com/flex/airports/rest/v1/json/withinRadius/${longitude}/${latitude}/${miles}?appId=44cee9e5&appKey=8a2ebed0d4d47e7005a060f5f20fa118`)
+    fetch(`${Config.API_FLIGHT}airports/rest/v1/json/withinRadius/${longitude}/${latitude}/${miles}?appId=${Config.APP_ID}&appKey=${Config.APP_KEY}`)
       .then(res => res.json()
         .then(resJson => {
           this.setState({
