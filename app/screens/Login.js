@@ -47,9 +47,9 @@ export default class Login extends Component {
 	};
 	async saveToken(value) {
 	    try {
-	      await AsyncStorage.setItem('token', value);
+	     	 await AsyncStorage.setItem('token', value);
 	    } catch (error) {
-	      console.log('AsyncStorage error: ' + error.message);
+	      	console.log('AsyncStorage error: ' + error.message);
 	    }
 	}
 

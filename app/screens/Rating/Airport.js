@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, FlatList, Button } from 'react-native';
+import { StyleSheet, Text, View, FlatList} from 'react-native';
 import { List, ListItem, SearchBar, Card  } from 'react-native-elements';
 import Preloader from '../../components/Preloader';
 import { NavigationActions } from 'react-navigation';

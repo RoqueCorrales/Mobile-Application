@@ -42,13 +42,6 @@ export default class Airports extends React.Component {
             }));
     }
 
-    // navigateToFinder = () => {
-    //   const navigateAction = NavigationActions.navigate({
-    //     routeName: 'AirportFinderScreen',
-    //   });
-    //   this.props.navigation.dispatch(navigateAction);
-    // }
-
     render() {
         if (this.state.loading) {
         return (

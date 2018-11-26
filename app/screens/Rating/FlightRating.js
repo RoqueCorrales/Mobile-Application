@@ -1,8 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View, Dimensions } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { Rating, Card } from 'react-native-elements';
 import Preloader from '../../components/Preloader';
-import { NavigationActions } from 'react-navigation';
 import Config from '../../utils/Config';
 
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
-// import { FlatList } from 'react-native-gesture-handler';
 import { List, ListItem } from 'react-native-elements';
 import Preloader from '../components/Preloader';
 import { NavigationActions } from 'react-navigation';

@@ -20,86 +20,86 @@ import FlightsScreen from '../screens/Rating/Flights';
 import FlightRatingScreen from '../screens/Rating/FlightRating';
 
 const AuthStack = createStackNavigator({
-  Login: LoginScreen,
-  Register: RegisterScreen,
+    Login: LoginScreen,
+    Register: RegisterScreen,
 });
 
 const HomeStack = createStackNavigator({
-  Home: HomeScreen,
-  AirlinesScreen: AirlinesScreen,
+    Home: HomeScreen,
+    AirlinesScreen: AirlinesScreen,
 });
 
 const AirportsStack = createStackNavigator({
-  AirportsScreen: AirportsScreen,
-  AirportLocationScreen: AirportLocationScreen,
-  AirportFinderScreen: AirportFinderScreen
+    AirportsScreen: AirportsScreen,
+    AirportLocationScreen: AirportLocationScreen,
+    AirportFinderScreen: AirportFinderScreen
 });
 
 const RatingStack = createStackNavigator({
-  AirportScreen: AirportScreen,
-  FlightsScreen: FlightsScreen,
-  FlightRatingScreen: FlightRatingScreen
+    AirportScreen: AirportScreen,
+    FlightsScreen: FlightsScreen,
+    FlightRatingScreen: FlightRatingScreen
 });
 
 const AirlinesStack = createStackNavigator({
-  Airlines: AirlinesScreen,
-  AirlineDetailScreen: AirlineDetailScreen
+    Airlines: AirlinesScreen,
+    AirlineDetailScreen: AirlineDetailScreen
 })
 
 const AppTabs =  createBottomTabNavigator(
-  {
+    {
     Home: {
-      screen: HomeStack,
-      navigationOptions: {
-        tabBarLabel: 'Home',
-        tabBarIcon: ({ tintColor }) => (
-          <Icon name="home" color={tintColor} size={20} />
-        )
-      }
+        screen: HomeStack,
+        navigationOptions: {
+            tabBarLabel: 'Home',
+            tabBarIcon: ({ tintColor }) => (
+            <Icon name="home" color={tintColor} size={20} />
+            )
+        }
     },
     Airports: {
-      screen: AirportsStack,
-      navigationOptions: {
-        tabBarLabel: 'Airports',
-        tabBarIcon: ({ tintColor }) => (
-          <Icon name="local-airport" color={tintColor} size={20} />
-        )
-      }
+        screen: AirportsStack,
+        navigationOptions: {
+            tabBarLabel: 'Airports',
+            tabBarIcon: ({ tintColor }) => (
+            <Icon name="local-airport" color={tintColor} size={20} />
+            )
+        }
     },
     Rating: {
-      screen: RatingStack,
-      navigationOptions: {
-        tabBarLabel: 'Ratings',
-        tabBarIcon: ({ tintColor }) => (
-          <Icon name="star" color={tintColor} size={20} />
-        )
-      }
+        screen: RatingStack,
+        navigationOptions: {
+            tabBarLabel: 'Ratings',
+            tabBarIcon: ({ tintColor }) => (
+            <Icon name="star" color={tintColor} size={20} />
+            )
+        }
     },
     Airlines: {
-      screen: AirlinesStack,
-      navigationOptions: {
-        tabBarLabel: 'Airlines',
-        tabBarIcon: ({ tintColor }) => (
-          <Icon name="airline-seat-recline-normal" color={tintColor} size={20} />
-        )
-      }
+        screen: AirlinesStack,
+        navigationOptions: {
+            tabBarLabel: 'Airlines',
+            tabBarIcon: ({ tintColor }) => (
+            <Icon name="airline-seat-recline-normal" color={tintColor} size={20} />
+            )
+        }
     }
-  },
-  {
-    initialRouteName: 'Home',
-    order: ['Home', 'Airlines', 'Airports', 'Rating'],
-    navigationOptions:{
-      tabBarVisible: true
     },
-    tabBarOptions:{
-      activeTintColor: '#4286f4',
-      inactiveTintColor: '#bcbcbc'
+    {
+        initialRouteName: 'Home',
+        order: ['Home', 'Airlines', 'Airports', 'Rating'],
+        navigationOptions:{
+            tabBarVisible: true
+        },
+        tabBarOptions:{
+            activeTintColor: '#4286f4',
+            inactiveTintColor: '#bcbcbc'
+        }
     }
-  }
 );
 
 export default createSwitchNavigator({
-  AuthLoading: AuthLoadingComponent,
-  Auth: AuthStack,
-  App: AppTabs
+    AuthLoading: AuthLoadingComponent,
+    Auth: AuthStack,
+    App: AppTabs
 });
