@@ -27,7 +27,7 @@ export default class AirportFinder extends React.Component {
         this.getNearAirports = this.getNearAirports.bind(this);
     }
 
-    watchId: ?number = null
+    //watchId: ?number = null
 
     getNearAirports = (miles) => {
         this.setState({ loading: true })

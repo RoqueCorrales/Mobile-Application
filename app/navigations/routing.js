@@ -18,6 +18,8 @@ import AirportFinderScreen from '../screens/AirportFinder';
 import AirportScreen from '../screens/Rating/Airport';
 import FlightsScreen from '../screens/Rating/Flights';
 import FlightRatingScreen from '../screens/Rating/FlightRating';
+import AirportWeatherScreen from '../screens/Weather/AirportWeather';
+import WeatherAirportsScreen from '../screens/Weather/Airports';
 
 const AuthStack = createStackNavigator({
     Login: LoginScreen,
@@ -44,6 +46,11 @@ const RatingStack = createStackNavigator({
 const AirlinesStack = createStackNavigator({
     Airlines: AirlinesScreen,
     AirlineDetailScreen: AirlineDetailScreen
+})
+
+const WeatherStack = createStackNavigator({
+    Airports: WeatherAirportsScreen,
+    Weather: AirportWeatherScreen
 })
 
 const AppTabs =  createBottomTabNavigator(
@@ -83,11 +90,20 @@ const AppTabs =  createBottomTabNavigator(
             <Icon name="airline-seat-recline-normal" color={tintColor} size={20} />
             )
         }
+    },
+    Weather: {
+        screen: WeatherStack,
+        navigationOptions: {
+            tabBarLabel: 'Weather',
+            tabBarIcon: ({ tintColor }) => (
+            <Icon name="weather-snowy-rainy" color={tintColor} size={20} />
+            )
+        }
     }
     },
     {
         initialRouteName: 'Home',
-        order: ['Home', 'Airlines', 'Airports', 'Rating'],
+        order: ['Home', 'Airlines', 'Airports', 'Rating', 'Weather'],
         navigationOptions:{
             tabBarVisible: true
         },
