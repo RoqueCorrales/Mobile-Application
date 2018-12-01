@@ -47,9 +47,9 @@ export default class Login extends Component {
 	};
 	async saveToken(value) {
 	    try {
-	      await AsyncStorage.setItem('token', value);
+	     	 await AsyncStorage.setItem('token', value);
 	    } catch (error) {
-	      console.log('AsyncStorage error: ' + error.message);
+	      	console.log('AsyncStorage error: ' + error.message);
 	    }
 	}
 
@@ -70,6 +70,7 @@ export default class Login extends Component {
 			})
 		  	.then(res => res.json()
 		      	.then(resJson => {
+					console.log(resJson);
 		      		if (resJson.error) {
 		      			Toast.showWithGravity('Invalid credentials', Toast.LONG, Toast.BOTTOM);
 		      		}else{
