@@ -1,0 +1,25 @@
+Introduccion de lo que hace y los pasos a realizar para testear la app.
+https://www.youtube.com/watch?v=21oIarLiAKU
+
+min 15... pasos a seguir para poder probar la app en AWS DIVECE FARM...
+https://www.youtube.com/watch?v=O11nhUm8MKo
+
+
+ejemplos de diferentes componentes para utilizar en la app de mobile.
+github.com/awslabs/aws-device-farm-sample-app-for-android
+min 17:28
+https://www.youtube.com/watch?v=O11nhUm8MKo
+
+
+
+
+
+
+https://www.youtube.com/watch?v=O11nhUm8MKo 25:52
+
+
+aws
+https://us-west-2.console.aws.amazon.com/devicefarm/home?region=us-east-2#/projects
+
+tested
+https://us-west-2.console.aws.amazon.com/devicefarm/home?region=us-east-2#/projects/f5908628-c1a8-49d9-96e2-0f39015f1bc0/runs/e5922106-5bdb-4dd1-8c44-3a9d80effc26
