@@ -17,6 +17,7 @@ export default class AirportWeather extends React.Component {
       weatherUrl: params.weatherUrl,
       airportCode: params.airportCode,
       metar: {},
+      prevailing: {},
       coverage: {}
     }
   }
@@ -32,13 +33,12 @@ export default class AirportWeather extends React.Component {
       .then(res => res.json()
         .then(resJson => {
           this.setState({
-            metar: resJson.metar,
             coverage: resJson.metar.conditions.skyConditions[0].coverage,
-            windDirection: resJson.metar.conditions.wind.direction,
+            miles: resJson.metar.conditions.visibility.miles,
             temperaure: resJson.metar.temperatureCelsius,
+            pressure: resJson.metar.conditions.pressureInchesHg,
             loading: false
           })
-          console.log(this.state.conditions);
         })
         .catch(error => {
           console.log(error)
@@ -58,13 +58,16 @@ export default class AirportWeather extends React.Component {
         title='Weather Conditions'
         >
       <Text>
-        {`Coverage: ${this.state.coverage}`}
+        {this.state.coverage ? `Coverage: ${this.state.coverage}` : 'Coverage: N/A'}
+      </Text> 
+      <Text>
+        {this.state.miles ? `Visibility: ${this.state.miles} miles` : 'Wind Direction: N/A'}
       </Text>
       <Text>
-        {`Wind Direction: ${this.state.windDirection}`}
+        {this.state.pressure ? `Pressure Inches Hg: ${this.state.pressure}` : 'Pressure Inches Hg: N/A'}
       </Text>
       <Text>
-        {`Temperature: ${this.state.temperaure}`}
+        {this.state.temperaure ? `Temperature: ${this.state.temperaure} celsius` : 'Temperature: N/A'}
       </Text>
       </Card>
     );

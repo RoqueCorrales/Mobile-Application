@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Dimensions, View, Slider } from 'react-native';
+import { StyleSheet, Dimensions, View, Slider, Text } from 'react-native';
 import MapView from 'react-native-maps';
 import Config from '../utils/Config';
 
@@ -91,11 +91,12 @@ export default class AirportFinder extends React.Component {
     render() {
         return (
         <View style={styles.container}>
+            <Text>Miles: {this.state.radiusMiles}</Text>
             <Slider
                 style={{ width: 200, transform: [{ scaleX: 1.5 }, { scaleY: 1.5 }], paddingTop: 10}}
-                step={50}
+                step={25}
                 minimumValue={0}
-                maximumValue={500}
+                maximumValue={300}
                 onValueChange={val => this.setState({ radiusMiles: val })}
                 onSlidingComplete={val => this.getNearAirports(val)}
             />
@@ -123,8 +124,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    alignItems: 'center'
   },
   radius: {
     height: 50,
@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
   map: {
     left: 0,
     right: 0,
-    top: 30,
+    top: 50,
     bottom: 0,
     position: 'absolute'
   },

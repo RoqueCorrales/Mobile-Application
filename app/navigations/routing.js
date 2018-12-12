@@ -96,7 +96,7 @@ const AppTabs =  createBottomTabNavigator(
         navigationOptions: {
             tabBarLabel: 'Weather',
             tabBarIcon: ({ tintColor }) => (
-            <Icon name="weather-snowy-rainy" color={tintColor} size={20} />
+            <Icon name="cloud" color={tintColor} size={20} />
             )
         }
     }
